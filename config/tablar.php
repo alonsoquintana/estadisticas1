@@ -159,7 +159,7 @@ return [
         [
             'text' => 'Document',
             'icon' => 'ti ti-files',
-            'url' => '/documents'
+            'url' => '/document'
         ],
 
         [

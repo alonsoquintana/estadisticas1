@@ -43,11 +43,22 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'pdf_file' => 'required|mimes:pdf|max:2048', // Max 2MB
+        ]);
+
         request()->validate(Document::$rules);
 
-        $document = Document::create($request->all());
+        //$document = Document::create($request->all());
+        
+        // Guardar el archivo PDF en el almacenamiento
+        if ($request->hasFile('pdf_file')) {
+            $path = $request->file('pdf_file')->store('pdfs');
+            $request->merge(['pdf_path' => $path]);
+        }
 
-        return redirect()->route('documents.index')
+
+        return redirect()->route('document.index')
             ->with('success', 'Document created successfully.');
     }
 
@@ -103,7 +114,7 @@ class DocumentController extends Controller
     {
         $document = Document::find($id)->delete();
 
-        return redirect()->route('documents.index')
+        return redirect()->route('document.index')
             ->with('success', 'Document deleted successfully');
     }
 }

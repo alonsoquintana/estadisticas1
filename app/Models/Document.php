@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id_documets
  * @property $title
+ * @property $pdf_file
  * @property $created_at
  * @property $updated_at
  *
@@ -21,6 +22,7 @@ class Document extends Model
     static $rules = [
 		'id_documets' => 'required',
 		'title' => 'required',
+    'pdf_file' => 'required'
     ];
 
     protected $perPage = 20;
@@ -30,11 +32,8 @@ class Document extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_documets','title'];
+    protected $fillable = ['id_documets','title','pdf_file'];
 
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
+
 
 }

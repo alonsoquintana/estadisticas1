@@ -26,4 +26,4 @@ Auth::routes();
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/categories', App\Http\Controllers\CategoryController::class);
-Route::resource('/documents', App\Http\Controllers\DocumentController::class);
+Route::resource('/document', App\Http\Controllers\DocumentController::class);

@@ -18,6 +18,15 @@
     </div>
 </div>
 
+<div class="form-group mb-3">
+    <label class="form-label"> {{ Form::label('pdf_file', 'PDF File') }}</label>
+    <div>
+        {{ Form::file('pdf_file', ['class' => 'form-control' . ($errors->has('pdf_file') ? ' is-invalid' : '')]) }}
+        {!! $errors->first('pdf_file', '<div class="invalid-feedback">:message</div>') !!}
+        <small class="form-hint">Upload PDF file.</small>
+    </div>
+</div>
+
     <div class="form-footer">
         <div class="text-end">
             <div class="d-flex">

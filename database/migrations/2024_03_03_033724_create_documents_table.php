@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->id('id_documets');
+            $table->id();
             $table->string('title');
+            $table->text('pdf_file');
             $table->timestamps();
         });
     }
